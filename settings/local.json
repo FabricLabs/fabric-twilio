@@ -1,0 +1,6 @@
+{
+  "twilio": {
+    "sid": "place your SID here",
+    "token": "place your token here"
+  }
+}

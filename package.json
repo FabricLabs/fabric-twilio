@@ -1,0 +1,28 @@
+{
+  "name": "@fabric/twilio",
+  "version": "0.1.0-dev",
+  "description": "Twilio service for Fabric.",
+  "main": "services/twilio.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FabricLabs/fabric-twilio.git"
+  },
+  "keywords": [
+    "fabric",
+    "twilio",
+    "bitcoin"
+  ],
+  "author": "Fabric Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FabricLabs/fabric-twilio/issues"
+  },
+  "homepage": "https://github.com/FabricLabs/fabric-twilio#readme",
+  "dependencies": {
+    "@fabric/core": "martindale/fabric#message-relay",
+    "twilio": "^3.69.0"
+  }
+}
