@@ -8,15 +8,18 @@ class TwilioService extends Service {
   constructor (settings = {}) {
     super(settings);
     this.settings = merge({
-      twilio: {
-        sid: null,
-        token: null
-      }
+      alerts: [],
+      sid: null,
+      token: null,
+      from: null
     }, settings);
 
-    this.twilio = new Twilio(this.settings.twilio.sid, this.settings.twilio.token);
+    this.twilio = new Twilio(this.settings.sid, this.settings.token);
 
     return this;
+  }
+
+  async alert (msg) {
   }
 
   async start () {
@@ -25,6 +28,21 @@ class TwilioService extends Service {
 
   async stop () {
     
+  }
+
+  async _createSMS (options) {
+    const service = this;
+    const settings = merge({
+      from: this.settings.from
+    }, options);
+
+    return new Promise((resolve, reject) => {
+      service.twilio.messages.create(settings).catch((exception) => {
+        reject(exception);
+      }).then((message) => {
+        service.emit('log', `Twilio sent a message: ${message}`);
+      }).done(resolve);
+    });
   }
 }
 
